@@ -18,7 +18,7 @@ class UserSpec extends FunSpec {
                 // Act
                 val actual = user.validate
                 // Assert
-                assert(actual)
+                assert(actual == "OK")
             }
 
             it("パスワードが8文字未満の場合にはfalse") {
@@ -27,7 +27,7 @@ class UserSpec extends FunSpec {
                 // Act
                 val actual = user.validate
                 // Assert
-                assert(!actual)
+                assert(actual == "NG")
             }
         }
 

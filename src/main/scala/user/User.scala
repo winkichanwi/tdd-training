@@ -6,19 +6,13 @@ case class User(
    email: String,
    password: String) {
 
-    def validate: Boolean = password.length >= 8
+    def validate: String = if (password.length >= 8) "OK" else "NG"
 
-    def getSignature: String = if (companyName.isEmpty) {
-        if (validate) {
-            userName + " OK"
+    def getSignature: String = {
+        if (companyName.isEmpty) {
+            s"$userName $validate"
         } else {
-            userName + " NG"
-        }
-    } else {
-        if (validate) {
-            companyName + ": " +  userName + " OK"
-        } else {
-            companyName + ": " +  userName + " NG"
+            s"$companyName: $userName $validate"
         }
     }
 }
